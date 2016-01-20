@@ -32,6 +32,8 @@ namespace GAME {
 		virtual GLuint LoadVertShader(const std::string& _filename) = 0;
 		virtual GLuint LoadFragShader(const std::string& _filename) = 0;
 
+		virtual GLuint GetProgram() = 0;
+
 	protected:
 		Window* windowPtr;
 		GLuint program;

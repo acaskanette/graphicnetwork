@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL2-2.0.3\include;C:\GameDev\glew-1.13.0\include;C:\GameDev\glm;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL2-2.0.3\include;C:\GameDev\glew-1.13.0\include;C:\GameDev\glm;C:\GameDev\glm-0.9.7.1;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -99,6 +99,10 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VMath.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="quadsphere.frag" />
+    <None Include="quadsphere.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

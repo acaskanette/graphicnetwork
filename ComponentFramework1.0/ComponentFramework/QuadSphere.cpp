@@ -5,7 +5,7 @@ QuadSphere::~QuadSphere() {
 
 }
 
-QuadSphere::QuadSphere(int numSubDivisions) {
+QuadSphere::QuadSphere(int numSubDivisions, GLuint program) {
 
 	numVertices = 6 * int(::pow(4.0, numSubDivisions + 1 ) );
 	index = 0;
@@ -65,6 +65,7 @@ QuadSphere::QuadSphere(int numSubDivisions) {
 
 	 /// assigns the addr of "points" to be the beginning of the array buffer "sizeof(points)" in length
 	glEnableVertexAttribArray(VERTEX_ATTRIB);
+	glBindAttribLocation(program, 0, "vPosition");
     glBufferSubData(GL_ARRAY_BUFFER, 0, VERTEX_LENGTH, vertex );
 	glVertexAttribPointer(VERTEX_ATTRIB, 4, GL_FLOAT, GL_FALSE, 0,(GLvoid*)(0) );
 

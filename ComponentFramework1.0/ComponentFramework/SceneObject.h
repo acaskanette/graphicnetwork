@@ -1,8 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include <gl\glew.h>
-#include "glm\glm.hpp"		// Glm Math Library
-#include "glm\gtc\matrix_transform.hpp"	// Include matrix rotation
+#include <glm.hpp>		// Glm Math Library
+#include <gtc\matrix_transform.hpp>	// Include matrix rotation
 
 class SceneObject
 {

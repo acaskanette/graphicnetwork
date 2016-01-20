@@ -33,6 +33,8 @@ namespace GAME {
 		virtual GLuint LoadVertShader(const std::string& _filename);
 		virtual GLuint LoadFragShader(const std::string& _filename);
 
+		virtual GLuint GetProgram();
+
 	};
 }
 #endif

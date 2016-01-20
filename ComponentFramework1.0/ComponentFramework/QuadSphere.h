@@ -25,7 +25,7 @@ private:
 	
 public:
 	
-	QuadSphere(int numSubDivisions);
+	QuadSphere(int numSubDivisions, GLuint program);
 	~QuadSphere();
 	
 	virtual bool OnCreate();

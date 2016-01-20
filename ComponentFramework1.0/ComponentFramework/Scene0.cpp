@@ -10,6 +10,11 @@ Scene0::~Scene0(){ }
 
 bool Scene0::OnCreate() {
 
+
+	// Make a Sphere
+	testObject = new QuadSphere(4, program);
+
+
 	OnResize(windowPtr->GetWidth(), windowPtr->GetHeight());
 	/// Load Assets: as needed 
 
@@ -17,9 +22,9 @@ bool Scene0::OnCreate() {
 
 	// Load a program and link the shaders to it
 	program = glCreateProgram();
-	GLuint vertexShader = LoadVertShader("shader.vert");
+	GLuint vertexShader = LoadVertShader("quadsphere.vert");
 	glAttachShader(program, vertexShader);
-	GLuint fragmentShader = LoadFragShader("shader.frag");
+	GLuint fragmentShader = LoadFragShader("quadsphere.frag");
 	glAttachShader(program, fragmentShader);
 	glLinkProgram(program);
 
@@ -55,8 +60,6 @@ bool Scene0::OnCreate() {
 	}
 
 
-	// Make a Sphere
-	testObject = new QuadSphere(4);
 
 }
 
@@ -157,4 +160,8 @@ void Scene0::OnResize(const int width_, const int height_){
 	windowPtr->SetWindowSize(width_, height_);
 	glViewport(0, 0, windowPtr->GetWidth(), windowPtr->GetHeight());	
 
+}
+
+GLuint Scene0::GetProgram() {
+	return program;
 }

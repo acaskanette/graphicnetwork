@@ -1,2 +1,2 @@
-INFO: Initializing the window and first scene ( c:\gamedev\scottgraphics+networking\componentframework1.0\componentframework\gamescenemanager.cpp: 90)
-INFO: 1.13.0 ( c:\gamedev\scottgraphics+networking\componentframework1.0\componentframework\window.cpp: 71)
+INFO: Initializing the window and first scene ( c:\gamedev\graphicnetwork\componentframework1.0\componentframework\gamescenemanager.cpp: 90)
+INFO: 1.13.0 ( c:\gamedev\graphicnetwork\componentframework1.0\componentframework\window.cpp: 71)

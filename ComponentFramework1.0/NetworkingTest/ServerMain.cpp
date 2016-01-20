@@ -23,7 +23,7 @@ ServerMain::ServerMain()
 		exit(EXIT_FAILURE);
 	}
 	else {
-		printf("IP Set up on port 9998");
+		printf("IP Set up on port 9998\n\n");
 	}
 
 	/* Open a connection with the IP provided (listen on the host's port) */
@@ -33,7 +33,7 @@ ServerMain::ServerMain()
 		exit(EXIT_FAILURE);
 	}
 	else {
-		printf("Now listening for connection on port 9998");
+		printf("Now listening for connection on port 9998\n\n");
 	}
 
 	/* Wait for a connection, send data and term */
