@@ -3,10 +3,14 @@
 
 #include "Scene.h"
 #include "Window.h"
+#include "Quadsphere.h"
 
 namespace GAME {
 	class Scene0 : public Scene  {
+	
 	protected:
+
+		SceneObject* testObject;
 		
 	public:
 		explicit Scene0(Window& windowRef);
@@ -25,6 +29,9 @@ namespace GAME {
 		virtual void Render() const;
 		virtual void HandleEvents(const SDL_Event &SDLEvent);
 		virtual void OnResize(const int width, const int height);
+
+		virtual GLuint LoadVertShader(const std::string& _filename);
+		virtual GLuint LoadFragShader(const std::string& _filename);
 
 	};
 }

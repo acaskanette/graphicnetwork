@@ -1,9 +1,11 @@
 #include "QuadSphere.h"
 
 
-QuadSphere::QuadSphere(int numSubDivisions){
+QuadSphere::~QuadSphere() {
 
+}
 
+QuadSphere::QuadSphere(int numSubDivisions) {
 
 	numVertices = 6 * int(::pow(4.0, numSubDivisions + 1 ) );
 	index = 0;
@@ -11,7 +13,7 @@ QuadSphere::QuadSphere(int numSubDivisions){
 	normals = new Vec4[numVertices];
 	texCoords = new Vec2[numVertices];
 
-	OnCreate();
+	// OnCreate();
 
 	Vec4 cube[8] = {
 		///Front 4
@@ -26,14 +28,13 @@ QuadSphere::QuadSphere(int numSubDivisions){
 		Vec4(  0.5, -0.5, -0.5, 1.0 )
 	};
 
-
-
 	int count = numSubDivisions;
 	if (count > 0){
 		for(int j = 0; j<8;++j){
 			cube[j] = VMath::normalize(cube[j]);
 		}
 	}
+
 	/// I'm using the GL_QUADS method of drawing so I'll need specify cube 1234
 	DivideFace( cube[1], cube[0], cube[3], cube[2], count); /// Front face
 	DivideFace( cube[2], cube[3], cube[7], cube[6], count); /// Right face
@@ -43,8 +44,6 @@ QuadSphere::QuadSphere(int numSubDivisions){
 	DivideFace( cube[5], cube[4], cube[0], cube[1], count); /// Left face
 
 	SphericalNormals();
-
-
 
 	/// Might not want to do this here!!! We'll talk in class
 	printf("%d vs %d\n",index,numVertices);
@@ -149,7 +148,7 @@ void QuadSphere::SphericalNormals(){
 
 
 bool QuadSphere::OnCreate() {
-	
+	return true;
 }
 
 void QuadSphere::OnDestroy() {

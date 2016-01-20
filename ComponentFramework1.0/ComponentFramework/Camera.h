@@ -3,8 +3,7 @@
 #include "SceneObject.h"
 
 
-class Camera :
-	public SceneObject
+class Camera 
 {
 public:
 	Camera();

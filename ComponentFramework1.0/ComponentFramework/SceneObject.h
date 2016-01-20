@@ -7,8 +7,8 @@
 class SceneObject
 {
 public:
-	SceneObject();
-	~SceneObject();
+	SceneObject(){};
+	~SceneObject(){};
 
 	// Prevents compiler from making weird (copy) constructors
 	SceneObject(const SceneObject&) = delete;

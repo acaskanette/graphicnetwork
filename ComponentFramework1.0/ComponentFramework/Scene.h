@@ -3,13 +3,14 @@
 
 #include "SDL.h"
 #include "Window.h"
-
+#include "GL/glew.h"
+#include <string>
 
 namespace GAME {
 	class Scene {
 	public:
 		explicit Scene(class Window& windowRef);
-		virtual ~Scene();
+		~Scene();
 
 		// Prevents compiler from making weird (copy) constructors
 		Scene(const Scene&) = delete;
@@ -28,8 +29,12 @@ namespace GAME {
 		virtual void HandleEvents(const SDL_Event &SDLEvent) = 0;
 		virtual void OnResize(const int, const int) = 0;
 
+		virtual GLuint LoadVertShader(const std::string& _filename) = 0;
+		virtual GLuint LoadFragShader(const std::string& _filename) = 0;
+
 	protected:
 		Window* windowPtr;
+		GLuint program;
 
 	};
 }
