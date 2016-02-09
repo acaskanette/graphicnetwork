@@ -1,5 +1,6 @@
 /// A simple subdivided cube - SSF
 #include "VMath.h"
+#include "MMath.h"
 #include "SceneObject.h"
 #include <gl\glew.h>
 
@@ -12,6 +13,13 @@ private:
 	Vec4 *vertex;
 	Vec4 *normals;
 	Vec2 *texCoords;
+		
+
+	GLfloat modelViewLocation;
+	GLfloat projectionLocation;
+	GLfloat normalLocation;
+	GLfloat cameraViewMatrixLocation;
+	GLfloat lightPositionLocation;
 
 	GLuint vao;
 

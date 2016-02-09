@@ -9,11 +9,24 @@ ClientMain::ClientMain() {
 		exit(EXIT_FAILURE);
 	}
 
+
+	/* NULL implies this is a server */
+	if (SDLNet_ResolveHost(&ip, "localhost", 0x2B1A) < 0)
+	{
+		printf("SDL_net failed to resolve host");
+		exit(EXIT_FAILURE);
+	}
+	else {
+		std::cout << "IP Set up ip: " << std::hex << ip.host << ":" << std::hex << ip.port << std::endl;
+		//printf("IP Set up on port: 9998\n\n");
+	}
+
 	
-	// Open a connection with the IP provided (listen on the host's port) */
+	// Open a connection with the IP provided (listen on the host's port)
 	if (!(sd = SDLNet_TCP_Open(&ip)))
 	{
-		printf("Failed to open Port");
+		std::cout << "Failed to connect to ip: " << std::hex << ip.host << ":" << std::hex << ip.port << std::endl;
+		//printf("Failed to open Port");
 		exit(EXIT_FAILURE);
 	}
 

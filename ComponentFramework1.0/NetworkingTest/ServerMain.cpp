@@ -1,14 +1,12 @@
 #include "ServerMain.h"
-
+#include <iostream>
 
 ServerMain::ServerMain()
 {
-	TCPsocket sd, csd; /* Socket descriptor, Client socket descriptor */
+	TCPsocket sd, csd; /* Socket descriptor, Client socket descriptor: handles to the socket location */
 	IPaddress ip, *remoteIP;
 	int quit, quit2;
 	char buffer[512];
-
-
 
 	if (SDLNet_Init() < 0)
 	{
@@ -17,13 +15,13 @@ ServerMain::ServerMain()
 	}
 
 	/* NULL implies this is a server */
-	if (SDLNet_ResolveHost(&ip, NULL, 9998) < 0)
+	if (SDLNet_ResolveHost(&ip, NULL, 0x2B1A) < 0)
 	{
 		printf("SDL_net failed to resolve host");
 		exit(EXIT_FAILURE);
 	}
 	else {
-		printf("IP Set up on port 9998\n\n");
+		std::cout << "IP Set up on port: " << std::hex << ip.port << std::endl;
 	}
 
 	/* Open a connection with the IP provided (listen on the host's port) */
@@ -33,7 +31,8 @@ ServerMain::ServerMain()
 		exit(EXIT_FAILURE);
 	}
 	else {
-		printf("Now listening for connection on port 9998\n\n");
+		std::cout << "Now listening for connection on port: " << std::hex << ip.port << std::endl;
+		//printf("Now listening for connection on port: 9998\n\n");
 	}
 
 	/* Wait for a connection, send data and term */
@@ -59,7 +58,18 @@ ServerMain::ServerMain()
 			{
 				if (SDLNet_TCP_Recv(csd, buffer, 512) > 0)
 				{
-					printf("Client say: %s\n", buffer);
+					
+					SDL_Event_NETWORK_TRANSMITABLE netE;
+					
+					for (int i = 0; i < sizeof(SDL_Event); i++) {
+						netE.buffer[i] = buffer[i];
+					}
+
+					SDL_Event e = netE.eventName;
+
+					std::cout << "Client says SDL Event Type: " << netE.eventName.type << std::endl;
+
+					//printf("Client says SDL Event Type: %s\n", (int)(netE.eventName.type));
 
 					if (strcmp(buffer, "exit") == 0)	// lexicon graphical difference is nothing, they're same string
 					{

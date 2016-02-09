@@ -108,5 +108,11 @@
   <ItemGroup>
     <None Include="quadsphere.frag" />
     <None Include="quadsphere.vert" />
+    <None Include="phongquadsphere.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="phongquadsphere.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -101,6 +101,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="phongquadsphere.frag" />
+    <None Include="phongquadsphere.vert" />
     <None Include="quadsphere.frag" />
     <None Include="quadsphere.vert" />
   </ItemGroup>

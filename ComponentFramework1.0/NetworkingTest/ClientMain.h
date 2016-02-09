@@ -12,6 +12,7 @@ public:
 	TCPsocket sd;		/* Socket descriptor */
 	int quit, len;
 	char buffer[512];
+	std::string input;
 
 	ClientMain();
 	~ClientMain();

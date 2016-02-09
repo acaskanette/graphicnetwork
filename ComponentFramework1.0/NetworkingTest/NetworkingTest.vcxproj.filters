@@ -24,12 +24,18 @@
     <ClCompile Include="ServerMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UDPServerMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClientMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ServerMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPServerMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

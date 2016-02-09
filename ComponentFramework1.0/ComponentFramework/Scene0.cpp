@@ -22,9 +22,9 @@ bool Scene0::OnCreate() {
 
 	// Load a program and link the shaders to it
 	program = glCreateProgram();
-	GLuint vertexShader = LoadVertShader("quadsphere.vert");
+	GLuint vertexShader = LoadVertShader("phongquadsphere.vert");
 	glAttachShader(program, vertexShader);
-	GLuint fragmentShader = LoadFragShader("quadsphere.frag");
+	GLuint fragmentShader = LoadFragShader("phongquadsphere.frag");
 	glAttachShader(program, fragmentShader);
 	glLinkProgram(program);
 
@@ -59,7 +59,11 @@ bool Scene0::OnCreate() {
 		return true;
 	}
 
-
+	////Camera
+	//gluLookAt(
+	//	0.0f, 0.0f, 10.0f,	/// Camera position
+	//	0.0f, 0.0f, 0.0f, /// What the camera is looking at
+	//	0.0f, 1.0f, 0.0f);	/// Which direction is up to the camera
 
 }
 
@@ -84,7 +88,14 @@ GLuint Scene0::LoadVertShader(const std::string& _filename) {
 		glGetShaderiv(shader, GL_COMPILE_STATUS, &shaderCompiled);
 		// If it didn't, log the error and save some memory
 		if (shaderCompiled != GL_TRUE) {
-			//LogManager::GetInstance().LogError("Unable to compile shader" + std::to_string(shader) + "  Source: " + shaderSource + "/n");
+
+			GLsizei logSize;
+			std::string errorLog;
+			glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logSize);
+			errorLog.resize(logSize);
+			glGetShaderInfoLog(shader, logSize, &logSize, &errorLog[0]);
+
+			std::cout << errorLog << std::endl;
 			glDeleteShader(shader);
 			shader = 0;
 		}
@@ -116,7 +127,14 @@ GLuint Scene0::LoadFragShader(const std::string& _filename) {
 		glGetShaderiv(shader, GL_COMPILE_STATUS, &shaderCompiled);
 		// If it didn't, log the error and save some memory
 		if (shaderCompiled != GL_TRUE) {
-			//LogManager::GetInstance().LogError("Unable to compile shader" + std::to_string(shader) + "  Source: " + shaderSource + "/n");
+			
+			GLsizei logSize;
+			std::string errorLog;
+			glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logSize);
+			errorLog.resize(logSize);
+			glGetShaderInfoLog(shader, logSize, &logSize, &errorLog[0]);
+
+			std::cout << errorLog << std::endl;
 			glDeleteShader(shader);
 			shader = 0;
 		}

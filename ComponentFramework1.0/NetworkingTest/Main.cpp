@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ServerMain.h"
+#include "UDPServerMain.h"
 #include "ClientMain.h"
 
 
@@ -8,7 +8,7 @@
 int main(int argc, char **argv)
 {
 	
-	ServerMain server;
+	UDPServerMain server;
 
 	return 0;
 }

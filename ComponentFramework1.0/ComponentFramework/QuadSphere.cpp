@@ -7,6 +7,13 @@ QuadSphere::~QuadSphere() {
 
 QuadSphere::QuadSphere(int numSubDivisions, GLuint program) {
 
+
+	projectionLocation = glGetUniformLocation(program, "projectionMatrix");
+	modelViewLocation = glGetUniformLocation(program, "modelViewMatrix");
+	cameraViewMatrixLocation = glGetUniformLocation(program, "cameraViewMatrix");
+	normalLocation = glGetUniformLocation(program, "normalMatrix");
+	lightPositionLocation = glGetUniformLocation(program, "lightPos");
+
 	numVertices = 6 * int(::pow(4.0, numSubDivisions + 1 ) );
 	index = 0;
 	vertex = new Vec4[numVertices];
@@ -72,6 +79,7 @@ QuadSphere::QuadSphere(int numSubDivisions, GLuint program) {
 
 	/// assigns the addr of "normals" to be "sizeof(points)" offset from the beginning and "sizeof(normals)" in length  
 	glEnableVertexAttribArray(NORMAL_ATTRIB);
+	glBindAttribLocation(program, 0, "vNormal");
     glBufferSubData(GL_ARRAY_BUFFER, VERTEX_LENGTH, NORMAL_LENGTH, normals );
 	glVertexAttribPointer(NORMAL_ATTRIB, 4, GL_FLOAT, GL_FALSE, 0,(GLvoid*)(VERTEX_LENGTH) );
 
@@ -161,7 +169,35 @@ void QuadSphere::Update(const float deltaTime) {
 }
 
 void QuadSphere::Render() const {
-	 glDrawArrays(GL_QUADS, 0, numVertices);
+
+	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+
+	glm::mat4 rotationTranslationMatrix = glm::rotate(translationMatrix, 0.0f, glm::vec3(0, 0, 1));
+
+	glm::mat4 projectionMatrix = glm::perspective(45.0f, 1024.0f / 1024.0f, 0.1f, 200.f); // vertical opening angle, ratio of vertical opening to horizontal, distance between camera and near plane (don't use zero), distance between camera to the far plane
+
+	glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -10.0f);
+	glm::vec3 cameraFacing = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 cameraUpVector = glm::vec3(0.0f, 1.0f, 0.0f);
+
+	glm::mat4 cameraViewMatrix = glm::lookAt(cameraPosition,		// position of camera,
+		cameraFacing,			// direction camera is facing,
+		cameraUpVector);		// camera's up vector
+
+	glm::mat4 normalMatrix = rotationTranslationMatrix;
+
+	glm::vec4 lightPosition = glm::vec4(5.0f,5.0f,0.0f, 0.0f);
+
+	glUniformMatrix4fv(projectionLocation, 1, GL_FALSE, &projectionMatrix[0][0]);				// send matrix to shader
+	glUniformMatrix4fv(modelViewLocation, 1, GL_FALSE, &rotationTranslationMatrix[0][0]);   // send matrix to shader
+	glUniformMatrix4fv(cameraViewMatrixLocation, 1, GL_FALSE, &cameraViewMatrix[0][0]);				// send matrix to shader	
+	glUniformMatrix4fv(normalLocation, 1, GL_FALSE, &normalMatrix[0][0]);				// send matrix to shader	
+
+	glUniform4fv(lightPositionLocation, 1, &lightPosition[0]);
+	
+
+	glDrawArrays(GL_QUADS, 0, numVertices);
+
 }
 	
 
