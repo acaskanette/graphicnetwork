@@ -58,7 +58,7 @@ UDPClientMain::UDPClientMain()
 
 		printf("Fill the buffer\n>");
 		for (int i = 0; i < sizeof(SDL_Event); i++) {
-			p->data[i] = netEvent.buffer[i];
+			*(p->data+i) = *(netEvent.buffer+i);
 		}
 
 		std::cout << "Event sent: " << netEvent.eventName.type << std::endl;

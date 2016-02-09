@@ -67,12 +67,9 @@ void Scene0::Render() const{
 
 void Scene0::HandleEvents(const SDL_Event& SDLEvent){
 
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-
 	switch (SDLEvent.type) {	
 	case SDL_EventType::SDL_MOUSEBUTTONDOWN:				
-		trackball->OnLeftMouseButtonDown(x, y);
+		trackball->OnLeftMouseButtonDown(SDLEvent.button.x, SDLEvent.button.y);
 		updateTrackball = true;
 		break;
 	case SDL_EventType::SDL_MOUSEBUTTONUP:
@@ -80,7 +77,7 @@ void Scene0::HandleEvents(const SDL_Event& SDLEvent){
 		break;
 	case SDL_EventType::SDL_MOUSEMOTION:	
 		if (updateTrackball)
-			trackball->OnMouseMove(x, y);
+			trackball->OnMouseMove(SDLEvent.button.x,SDLEvent.button.y);
 		break;	
 	default:
 		break;

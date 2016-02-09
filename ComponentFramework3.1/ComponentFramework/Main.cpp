@@ -1,6 +1,7 @@
 #include <iostream>
 #include "GameSceneManager.h"
 #include "Debug.h"
+#include <iostream>
 
 using namespace GAME;
 
@@ -14,6 +15,15 @@ int main(int argc, char* argcs[]) {
 
 
 	Debug::Init();
-	GameSceneManager::getInstance()->Run();
+
+	char query;
+	bool isServer;
+
+	std::cout << "Type y for server: ";
+	std::cin >> query; 
+	isServer = (query == 'y');
+
+	
+	GameSceneManager::getInstance()->Run(isServer);
 	exit(0);
 }

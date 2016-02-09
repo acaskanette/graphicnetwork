@@ -1,2 +1,4 @@
-INFO: Initializing the window and first scene ( c:\gamedev\graphicnetwork\componentframework3.1\componentframework\gamescenemanager.cpp: 95)
+INFO: Initializing the window and first scene ( c:\gamedev\graphicnetwork\componentframework3.1\componentframework\gamescenemanager.cpp: 106)
+INFO: 1.13.0 ( c:\gamedev\graphicnetwork\componentframework3.1\componentframework\window.cpp: 70)
+INFO: Initializing the window and first scene ( c:\gamedev\graphicnetwork\componentframework3.1\componentframework\gamescenemanager.cpp: 106)
 INFO: 1.13.0 ( c:\gamedev\graphicnetwork\componentframework3.1\componentframework\window.cpp: 70)

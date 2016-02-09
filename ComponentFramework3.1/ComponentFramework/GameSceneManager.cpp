@@ -11,6 +11,8 @@ using namespace GAME;
 std::unique_ptr<GameSceneManager> GameSceneManager::instance(nullptr);
 
 GameSceneManager::GameSceneManager() : windowInstance(), currentScene(nullptr),isRunning(false),frameRate(30) {}
+
+
 GameSceneManager::~GameSceneManager(){
 	windowInstance.OnDestroy();
 	isRunning = false;	
@@ -28,22 +30,32 @@ GameSceneManager* GameSceneManager::getInstance(){
 
 
 
-void GameSceneManager::Run(){
+void GameSceneManager::Run( bool asServer){
 	isRunning = Initialize();  /// Initialize the window and setup OpenGL
 	Timer timer;
 	timer.Start();
 
-	UDP_Server = new UDPServerMain();
+	if (asServer)
+		UDP_Server = new UDPServerMain();
+	else
+		UDP_Client = new UDPClientMain();
 
 	/// This is now the master loop for the program
 	while ( isRunning ) {
 		timer.UpdateFrameTicks();
 
-		//HandleEvents();
+		
+		if (asServer && UDP_Server->Listen()) {
+			HandleEvents(UDP_Server->e);
+		}
+		else if (!asServer && UDP_Client->Listen()) {
+			UDP_Client->Send();
+			HandleEvents(UDP_Client->e);
+		}
+
 		Update(timer.GetDeltaTime());
 		Render();
-		HandleEvents(UDP_Server->Listen());
-
+		
 		/// Keeep the event loop running at a sane rate
 		SDL_Delay(timer.GetSleepTime(frameRate));
 		///std::cout << "main loop running at: " << (1.0f/timer.GetDeltaTime()) << " frames/sec" << std::endl;
@@ -53,7 +65,6 @@ void GameSceneManager::Run(){
 
 void GameSceneManager::HandleEvents(SDL_Event SDLEvent) {
 		
-
 
 		switch (SDLEvent.type) {
 			case SDL_EventType::SDL_QUIT:

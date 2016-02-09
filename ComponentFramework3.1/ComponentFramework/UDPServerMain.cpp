@@ -7,26 +7,32 @@ UDPServerMain::UDPServerMain()
 		int quit;
 
 		/* Initialize SDL_net */
-		if (SDLNet_Init() < 0)
-		{
-			printf("SDLNet_Init: %s\n", SDLNet_GetError());
+		if (SDLNet_Init() < 0)	{
+			std::cout << "SDLNet_Init error: " << SDLNet_GetError() << std::endl;			
 			exit(EXIT_FAILURE);
+		}
+		else {
+			std::cout << "SDLNet_Initialized..." << std::endl;
 		}
 
 		/* Open a socket */
-		if (!(sd = SDLNet_UDP_Open(0x1A2B)))
-		{
-			printf("SDLNet_UDP_Open: %s\n", SDLNet_GetError());
+		if (!(socketDescriptor = SDLNet_UDP_Open(0x1A2B))) {
+
+			std::cout << "SDLNet_UDP_Open error: " << SDLNet_GetError() << std::endl;			
 			exit(EXIT_FAILURE);
+		}
+		else {
+			std::cout << "SDLNet UDP port opened..." << std::endl;
 		}
 
 		/* Make space for the packet */
-		if (!(p = SDLNet_AllocPacket(512)))
-		{
-			fprintf(stderr, "SDLNet_AllocPacket: %s\n", SDLNet_GetError());
+		if (!(packet = SDLNet_AllocPacket(512)))	{
+			std::cout << "SDLNet_AllocPacket error: " << SDLNet_GetError() << std::endl;		
 			exit(EXIT_FAILURE);
 		}
-
+		else {
+			std::cout << "SDLNet packet size set..." << std::endl;
+		}
 		
 
 		
@@ -38,36 +44,37 @@ UDPServerMain::UDPServerMain()
 UDPServerMain::~UDPServerMain()
 {
 
-	/* Clean and exit */
-	SDLNet_FreePacket(p);
+	
+	SDLNet_FreePacket(packet);
 	SDLNet_Quit();
 }
 
-SDL_Event UDPServerMain::Listen() {
 
-	/* Main loop */
-	bool quit = false;
-	while (!quit)
-	{
-		/* Wait a packet. UDP_Recv returns != 0 if a packet is coming */
-		if (SDLNet_UDP_Recv(sd, p))
+// returns true if a new event is on the server
+bool UDPServerMain::Listen() {
+			
+
+		// std::cout << "SDLNet listening for packet..." << std::endl;
+		// Wait for and receive a packet, stored in p
+		if (SDLNet_UDP_Recv(socketDescriptor, packet))
 		{
 
 			// make a union event
-			SDL_Event_NETWORK_TRANSMITABLE netE;
+			SDL_Event_NETWORK_TRANSMITABLE netEvent;
 			// set its buffer to the value of the data
 			for (int i = 0; i < sizeof(SDL_Event); i++) {
-				netE.buffer[i] = p->data[i];
+				netEvent.buffer[i] = packet->data[i];
 			}
 			// make a concrete event
-			SDL_Event e = netE.eventName;
+			e = netEvent.eventName;
 			// debug log its type
-			std::cout << "Received SDL Event Type: " << e.type << std::endl;
-			// return the event
-			return e;
+			std::cout << "Received SDL Event Type: " << netEvent.eventName.type << std::endl;
+			
+
+			return true; // new event!
 						
 		}
-	}
 
-
+		return false;		// No new event
+	
 }

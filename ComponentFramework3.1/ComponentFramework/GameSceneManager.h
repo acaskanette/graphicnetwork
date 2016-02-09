@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Scene.h"
 #include "UDPServerMain.h"
+#include "UDPClientMain.h"
 
 
 
@@ -28,6 +29,7 @@ private:
 	Window windowInstance;
 	Scene *currentScene; 
 	UDPServerMain *UDP_Server;
+	UDPClientMain *UDP_Client;
 
 
 	///std::unique_ptr is a smart pointer that destroys the object it point to when the unique_ptr goes out of scope.
@@ -45,7 +47,7 @@ private:
 
 public:
 	static GameSceneManager* getInstance();
-	void Run(); 
+	void Run(bool asServer_); 
 	bool Initialize();
 	void Update(const float deltaTime);
 	void Render() const;
