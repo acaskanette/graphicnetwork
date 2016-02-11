@@ -78,6 +78,9 @@
     <ClCompile Include="UDPClientMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TexturedCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -140,6 +143,9 @@
     <ClInclude Include="NetworkDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TexturedCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -160,6 +166,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="blinnphongVert.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="blinnphongTextFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="blinnphongTextVert.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

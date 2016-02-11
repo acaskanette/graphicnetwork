@@ -80,6 +80,7 @@
     <ClCompile Include="Scene0.cpp" />
     <ClCompile Include="TCPServerMain.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="TexturedCube.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Trackball.cpp" />
     <ClCompile Include="UDPClientMain.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="Scene0.h" />
     <ClInclude Include="TCPServerMain.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="TexturedCube.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Trackball.h" />
     <ClInclude Include="UDPClientMain.h" />
@@ -111,6 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="blinnphongFrag.glsl" />
+    <None Include="blinnphongTextFrag.glsl" />
+    <None Include="blinnphongTextVert.glsl" />
     <None Include="blinnphongVert.glsl" />
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
