@@ -1,6 +1,7 @@
 #include "TexturedCube.h"
 #include "QuadSphere.h"
 #include "Shader.h"
+#include "LoadTextureRAW.h"
 using namespace GAME;
 
 TexturedCube::TexturedCube() :quadSphere(nullptr), shader(nullptr) {
@@ -17,8 +18,7 @@ bool TexturedCube::OnCreate(){
 	cameraPos = Vec3(0.0, 5.0, 10.0);
 	/// Create a shader with attributes
 	shader = new Shader("blinnphongTextVert.glsl", "blinnphongTextFrag.glsl", 3, 0, "vVertex", 1, "vNormal", 2, "vTexture");
-
-
+	
 
 #define VERTEX_LENGTH 	(quadSphere->getNumVertices() * (sizeof(Vec4)))
 #define NORMAL_LENGTH 	(quadSphere->getNumVertices() * (sizeof(Vec4)))
@@ -60,6 +60,10 @@ bool TexturedCube::OnCreate(){
 	normalMatrixID = glGetUniformLocation(shader->getProgram(), "normalMatrix");
 	lightPosID = glGetUniformLocation(shader->getProgram(), "lightPos");
 	cameraPosID = glGetUniformLocation(shader->getProgram(), "cameraPos");
+
+	GLuint loc = loadTextureRAW("InternalReflection.raw", 1024, 1024);
+	GLuint texture0 = glGetUniformLocation(shader->getProgram(), "myTexture0");
+	glUniform1i(texture0, loc);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); /// Unbinds the buffer by setting it to zero 
 	return true;

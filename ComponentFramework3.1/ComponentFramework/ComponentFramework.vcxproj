@@ -72,6 +72,7 @@
     <ClCompile Include="ClientMain.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="GameSceneManager.cpp" />
+    <ClCompile Include="LoadTextureRAW.cpp" />
     <ClCompile Include="Model0.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MMath.cpp" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <ClInclude Include="ClientMain.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="LoadTextureRAW.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="GameSceneManager.h" />
     <ClInclude Include="Model0.h" />
@@ -120,6 +122,7 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="firstFrag.glsl" />
     <None Include="firstVert.glsl" />
+    <None Include="InternalReflection.raw" />
     <None Include="phongFrag.glsl" />
     <None Include="phongVert.glsl" />
   </ItemGroup>

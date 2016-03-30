@@ -5,6 +5,7 @@
 #include "MMath.h"
 #include "QuadSphere.h"
 #include "Model0.h"
+#include "TexturedCube.h"
 
 using namespace GAME;
 
@@ -25,7 +26,7 @@ bool Scene0::OnCreate() {
 	OnResize(windowPtr->GetWidth(),windowPtr->GetHeight());
 
 	/// Load Assets: as needed 
-	cube = new Model0();
+	cube = new TexturedCube();
 	trackball = new Trackball();
 	updateTrackball = false;
 	return true;

@@ -1,10 +1,5 @@
-﻿Build started 2016-02-10 8:22:09 AM.
-     1>Project "C:\GameDev\GraphicNetwork\ComponentFramework3.1\ComponentFramework\ComponentFramework.vcxproj" on node 2 (Build target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>Link:
-         ComponentFramework.vcxproj -> C:\GameDev\GraphicNetwork\ComponentFramework3.1\Debug\ComponentFrameworkGraphics.exe
-     1>Done Building Project "C:\GameDev\GraphicNetwork\ComponentFramework3.1\ComponentFramework\ComponentFramework.vcxproj" (Build target(s)).
+﻿Build started 3/30/2016 8:32:17 AM.
 
 Build succeeded.
 
-Time Elapsed 00:00:00.28
+Time Elapsed 00:00:00.52

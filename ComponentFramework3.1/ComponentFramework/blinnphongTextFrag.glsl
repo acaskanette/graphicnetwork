@@ -1,8 +1,8 @@
 #version 330
+
 in vec3 vertNormal;
 in vec3 lightDir;
 in vec3 cameraDir;
-
 in vec2 texcoords;
 
 layout (location = 0) uniform sampler2D diffuseTexture;

@@ -1,7 +1,7 @@
 #version 330
 in vec4 vVertex;
 in vec4 vNormal;
-in vec4 vTexture;
+in vec2 vTexture;
  
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;

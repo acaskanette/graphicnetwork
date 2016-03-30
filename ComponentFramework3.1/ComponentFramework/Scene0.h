@@ -9,7 +9,7 @@
 
 namespace GAME {
 
-	class Model0;
+	class TexturedCube;
 	class Scene0 : public Scene  {
 	protected:
 		
@@ -32,7 +32,7 @@ namespace GAME {
 		virtual void OnResize(const int, const int);
 	
 	private:
-		Model0 *cube;
+		TexturedCube *cube;
 		Trackball *trackball;
 		bool updateTrackball;
 	

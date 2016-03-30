@@ -81,6 +81,9 @@
     <ClCompile Include="TexturedCube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoadTextureRAW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -146,6 +149,9 @@
     <ClInclude Include="TexturedCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LoadTextureRAW.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -173,6 +179,9 @@
     </None>
     <None Include="blinnphongTextVert.glsl">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="InternalReflection.raw">
+      <Filter>Source Files\Assets</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

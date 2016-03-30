@@ -3,6 +3,7 @@ c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\vc120.i
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\clientmain.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\debug.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\gamescenemanager.obj
+c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\loadtextureraw.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\model0.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\main.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\mmath.obj
@@ -11,6 +12,7 @@ c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\scene.o
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\scene0.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\tcpservermain.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\shader.obj
+c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\texturedcube.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\timer.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\trackball.obj
 c:\gamedev\graphicnetwork\componentframework3.1\componentframework\debug\udpclientmain.obj
