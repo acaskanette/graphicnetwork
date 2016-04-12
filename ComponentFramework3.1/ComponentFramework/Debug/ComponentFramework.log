@@ -1,5 +1,26 @@
-﻿Build started 3/30/2016 8:32:17 AM.
+﻿Build started 2016-04-11 4:38:31 PM.
+     1>Project "C:\GameDev\graphicnetwork\ComponentFramework3.1\ComponentFramework\ComponentFramework.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ComponentFramework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ClientMain.cpp Debug.cpp GameSceneManager.cpp LoadTextureRAW.cpp Model0.cpp Main.cpp MMath.cpp QuadSphere.cpp Scene.cpp Scene0.cpp TCPServerMain.cpp Shader.cpp TexturedCube.cpp Timer.cpp Trackball.cpp UDPClientMain.cpp UDPServerMain.cpp VMath.cpp Window.cpp
+         Window.cpp
+         VMath.cpp
+         UDPServerMain.cpp
+     1>c:\gamedev\graphicnetwork\componentframework3.1\componentframework\udpservermain.cpp(7): warning C4101: 'quit' : unreferenced local variable
+         UDPClientMain.cpp
+         Trackball.cpp
+         Timer.cpp
+         TexturedCube.cpp
+         Shader.cpp
+         TCPServerMain.cpp
+         Scene0.cpp
+         Scene.cpp
+         QuadSphere.cpp
+         MMath.cpp
+         Main.cpp
+         Model0.cpp
+     1>Done Building Project "C:\GameDev\graphicnetwork\ComponentFramework3.1\ComponentFramework\ComponentFramework.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.52
+Time Elapsed 00:00:29.76

@@ -40,7 +40,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\GameDev\glew-1.13.0\include;C:\GameDev\SDL2-2.0.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\GameDev\SDL2-2.0.3\lib\x86;C:\GameDev\glew-1.13.0\lib\Release\Win32;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\GameDev\glew-1.13.0\lib\Release\Win32;C:\GameDev\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -50,7 +50,10 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\GameDev\SDL2-2.0.3\lib\x86\SDL2.lib;C:\GameDev\SDL2-2.0.3\lib\x86\SDL2main.lib;C:\GameDev\SDL2-2.0.3\lib\x86\SDL2_net.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32s.lib;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;C:\GameDev\SDL2-2.0.3\lib\x86\SDL2_net.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32s.lib;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -68,7 +71,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

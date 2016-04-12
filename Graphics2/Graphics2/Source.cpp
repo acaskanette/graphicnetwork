@@ -1,65 +1,67 @@
-// GLEW - Extension Wrangler for OpenGL
-#define GLEW_STATIC
-#include <GL/glew.h>
+/*This source code copyrighted by Lazy Foo' Productions (2004-2015)
+and may not be redistributed without written permission.*/
 
-// SDL - Window manager
-#include "SDL.h"
+//Using SDL, SDL OpenGL, GLEW, standard IO, and strings
+#include <SDL.h>
+//#include <gl\glew.h>
+//#include <SDL_opengl.h>
+//#include <gl\glu.h>
+#include <stdio.h>
+#include <string>
 
-// Helpers
-#include <iostream>
+#include "Window.h"
 
-int main()
+int main(int argc, char* args[])
 {
+	Window* window = new Window();
 
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-		//std::cout << std::string(SDL_GetError());		
-	}
-
-	/// These attributes must be set before the SDL window is created 
-
-	/// You may need to change this to 16 or 32 depending on your graphics card
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);/// Enable Depth Cueing (the Z-buffer) 
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);/// Turn on double buffering with a 24bit Z buffer. 
-
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-
-	GLint major, minor;
-	glGetIntegerv(GL_MAJOR_VERSION, &major);
-	glGetIntegerv(GL_MINOR_VERSION, &minor);
-
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-
-
-	/// Create the SDL window
-	SDL_Rect winRect = SDL_Rect();
-	
-	SDL_Window* windowPtr = SDL_CreateWindow("Component Framework Project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		winRect.w, winRect.h, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN);
-	if (windowPtr == nullptr) {
-		//Debug::Log(EMessageType::FATAL_ERROR, SDL_GetError(), __FILE__, __LINE__);
-		return false;
-	}
-
-	/// Attach OpenGl to the new Window
-	SDL_GLContext glContext = SDL_GL_CreateContext(windowPtr);
-	if (glContext == nullptr) {
-		//Debug::Log(EMessageType::FATAL_ERROR, SDL_GetError(), __FILE__, __LINE__);
-		return false;
-	}
-
-	// Initialize Glew
-	glewExperimental = GL_TRUE;
-	if (glewInit() != GLEW_OK)
+	//Start up SDL and create window
+	if (!window->Initialize())
 	{
-		std::cout << "Failed to initialize GLEW" << std::endl;
-		return -1;
+		printf("Failed to initialize!\n");
+	}
+	else
+	{
+		//Main loop flag
+		bool quit = false;
+
+		//Event handler
+		SDL_Event e;
+
+		//Enable text input
+		SDL_StartTextInput();
+
+		//While application is running
+		while (!quit)
+		{
+			//Handle events on queue
+			while (SDL_PollEvent(&e) != 0)
+			{
+				//User requests quit
+				if (e.type == SDL_QUIT)
+				{
+					quit = true;
+				}
+				//Handle keypress with current mouse position
+				else if (e.type == SDL_TEXTINPUT)
+				{
+					int x = 0, y = 0;
+					SDL_GetMouseState(&x, &y);
+					window->HandleInput(e.text.text[0], x, y);
+				}
+			}
+
+			//Render Window
+			window->Render();
+			
+		}
+
+		//Disable text input
+		SDL_StopTextInput();
 	}
 
-	// Set OpenGL viewport size (x, y, width, height)
-	glViewport(0, 0, 800, 600);
+	//Free resources and close SDL
+	delete window;
 
-
-	
 	return 0;
 }
