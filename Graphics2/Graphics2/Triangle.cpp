@@ -4,6 +4,8 @@
 Triangle::Triangle()
 {
 
+	timeElapsed = 0.0f;
+
 	GLfloat vertices[] = {
 		-0.5f, -0.5f, 0.0f,
 		0.5f, -0.5f, 0.0f,
@@ -36,7 +38,14 @@ Triangle::~Triangle()
 
 void Triangle::Render() {
 	
+	timeElapsed += 0.016;
+	GLfloat greenValue = (sin(timeElapsed) / 2) + 0.5;
+	GLint vertexColorLocation = glGetUniformLocation(program, "ourColor");
+	
 	glUseProgram(program);				// Set active program
+	
+	glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
 	glBindVertexArray(VAO);				// Set active VAO
 	glDrawArrays(GL_TRIANGLES, 0, 3);	// Draw from that VAO
 	glBindVertexArray(0);				// Reset active VAO

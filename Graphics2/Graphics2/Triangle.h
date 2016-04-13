@@ -10,5 +10,7 @@ public:
 
 	virtual void Render();
 
+	float timeElapsed;
+
 };
 
