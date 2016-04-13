@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <gl\glew.h>
 
+#include "Triangle.h"
+
 class Window
 {
 public:
@@ -24,6 +26,8 @@ public:
 	GLint gVertexPos2DLocation = -1;
 	GLuint gVBO = 0;
 	GLuint gIBO = 0;
+
+	Triangle* triangle;
 
 	// Methods
 

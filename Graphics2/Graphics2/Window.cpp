@@ -75,6 +75,7 @@ bool Window::Initialize() {
 					}
 					
 					// Initialize OpenGL Objects here
+					triangle = new Triangle();
 
 				}
 			}
@@ -226,29 +227,32 @@ void Window::Render() {
 	//Clear color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//Render quad
-	if (gRenderQuad)
-	{
-		//Bind program
-		glUseProgram(gProgramID);
+	triangle->Render();
 
-		//Enable vertex position
-		glEnableVertexAttribArray(gVertexPos2DLocation);
 
-		//Set vertex data
-		glBindBuffer(GL_ARRAY_BUFFER, gVBO);
-		glVertexAttribPointer(gVertexPos2DLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), NULL);
+	////Render quad
+	//if (gRenderQuad)
+	//{
+	//	//Bind program
+	//	glUseProgram(gProgramID);
 
-		//Set index data and render
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gIBO);
-		glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, NULL);
+	//	//Enable vertex position
+	//	glEnableVertexAttribArray(gVertexPos2DLocation);
 
-		//Disable vertex position
-		glDisableVertexAttribArray(gVertexPos2DLocation);
+	//	//Set vertex data
+	//	glBindBuffer(GL_ARRAY_BUFFER, gVBO);
+	//	glVertexAttribPointer(gVertexPos2DLocation, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), NULL);
 
-		//Unbind program
-		glUseProgram(NULL);
-	}
+	//	//Set index data and render
+	//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gIBO);
+	//	glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, NULL);
+
+	//	//Disable vertex position
+	//	glDisableVertexAttribArray(gVertexPos2DLocation);
+
+	//	//Unbind program
+	//	glUseProgram(NULL);
+	//}
 
 	//Update screen
 	SDL_GL_SwapWindow(gWindow);

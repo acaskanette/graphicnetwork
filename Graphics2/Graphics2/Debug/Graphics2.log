@@ -1,5 +1,21 @@
-﻿Build started 2016-04-12 7:24:48 PM.
+﻿Build started 4/12/2016 9:10:55 PM.
+     1>Project "C:\GameDev\GraphicNetwork\Graphics2\Graphics2\Graphics2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt RenderObject.cpp Source.cpp Triangle.cpp Window.cpp
+         Window.cpp
+         Triangle.cpp
+         Source.cpp
+         RenderObject.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\GameDev\GraphicNetwork\Graphics2\Debug\Graphics2.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib "C:\GameDev\SDL2-2.0.3\lib\x86\SDL2_net.lib" "C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32.lib" "C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32s.lib" "C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\OpenGL32.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\GameDev\GraphicNetwork\Graphics2\Debug\Graphics2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\GameDev\GraphicNetwork\Graphics2\Debug\Graphics2.lib" /MACHINE:X86 Debug\RenderObject.obj
+         Debug\Source.obj
+         Debug\Triangle.obj
+         Debug\Window.obj
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Graphics2.vcxproj -> C:\GameDev\GraphicNetwork\Graphics2\Debug\Graphics2.exe
+     1>Done Building Project "C:\GameDev\GraphicNetwork\Graphics2\Graphics2\Graphics2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.28
+Time Elapsed 00:00:04.50
