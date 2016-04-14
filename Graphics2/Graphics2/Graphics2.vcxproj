@@ -72,6 +72,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TexturedCube.cpp" />
@@ -79,6 +80,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="TexturedCube.h" />
     <ClInclude Include="Triangle.h" />

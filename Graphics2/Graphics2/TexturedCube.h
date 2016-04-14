@@ -1,5 +1,8 @@
 #pragma once
 #include "RenderObject.h"
+
+class Camera;
+
 class TexturedCube :
 	public RenderObject
 {
@@ -12,6 +15,7 @@ public:
 
 	float timeElapsed;
 
+	Camera* camera;
 
 };
 

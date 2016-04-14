@@ -1,8 +1,10 @@
 #include "TexturedCube.h"
-
+#include "Camera.h"
 
 TexturedCube::TexturedCube()
 {
+
+	camera = new Camera();
 
 	float screenWidth = 640.0f;
 	float screenHeight = 480.0f;
@@ -116,6 +118,9 @@ TexturedCube::~TexturedCube()
 
 void TexturedCube::Render() {
 
+
+	
+
 	GLfloat greenValue = (sin(timeElapsed) / 2) + 0.5;
 	GLint vertexColorLocation = glGetUniformLocation(program, "ourColor");
 
@@ -125,7 +130,7 @@ void TexturedCube::Render() {
 
 	glUniformMatrix4fv(transformMatrixLocation, 1, GL_FALSE, glm::value_ptr(translationMatrix));
 	glUniformMatrix4fv(modelMatrixLocation, 1, GL_FALSE, glm::value_ptr(modelMatrix));
-	glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+	glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, glm::value_ptr(camera->viewMatrix));
 	glUniformMatrix4fv(projectionMatrixLocation, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 
 	glActiveTexture(GL_TEXTURE0);
@@ -137,12 +142,42 @@ void TexturedCube::Render() {
 	glUniform1i(glGetUniformLocation(program, "ourTexture1"), 1);
 
 	glBindVertexArray(VAO);				// Set active VAO
-	glDrawArrays(GL_TRIANGLES, 0, 36);	// Draw from that VAO
+	
+	// Multiple Cubes
+	
+	glm::vec3 cubePositions[] = {
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(2.0f, 5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f, 3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f, 2.0f, -2.5f),
+		glm::vec3(1.5f, 0.2f, -1.5f),
+		glm::vec3(-1.3f, 1.0f, -1.5f)
+	};
+	
+	for (GLuint i = 0; i < 10; i++)
+	{
+		glm::mat4 model;
+		model = glm::translate(model, cubePositions[i]);
+		GLfloat angle = 20.0f * i;
+		model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
+		glUniformMatrix4fv(modelMatrixLocation, 1, GL_FALSE, glm::value_ptr(model));
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+	}
+	// End Multiple Cubes
+
+	//glDrawArrays(GL_TRIANGLES, 0, 36);	// Draw from that VAO
 	glBindVertexArray(0);				// Reset active VAO
 
 }
 
 void TexturedCube::Update() {
+
+	camera->Update();
 
 	timeElapsed += 0.016;
 
