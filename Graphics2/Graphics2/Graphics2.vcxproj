@@ -39,18 +39,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\glew-1.13.0\include;C:\GameDev\SDL2-2.0.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\GameDev\glew-1.13.0\lib\Release\Win32;C:\GameDev\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\GameDev\glew-1.13.0\include;C:\GameDev\SDL2-2.0.3\include;C:\GameDev\soil\src;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GameDev\glew-1.13.0\lib\Release\Win32;C:\GameDev\SDL2-2.0.3\lib\x86;C:\GameDev\soil\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;C:\GameDev\SDL2-2.0.3\lib\x86\SDL2_net.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32s.lib;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SOIL.lib;C:\GameDev\SDL2-2.0.3\lib\x86\SDL2_net.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32.lib;C:\GameDev\glew-1.13.0\lib\Release\Win32\glew32s.lib;C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <EntryPointSymbol>
       </EntryPointSymbol>
@@ -84,6 +85,9 @@
   <ItemGroup>
     <None Include="fragment-Triangle.glsl" />
     <None Include="vertex-Triangle.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="wall.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
