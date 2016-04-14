@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <gl\glew.h>
 
-#include "Triangle.h"
+#include "TexturedCube.h"
 
 class Window
 {
@@ -27,7 +27,7 @@ public:
 	GLuint gVBO = 0;
 	GLuint gIBO = 0;
 
-	Triangle* triangle;
+	TexturedCube* triangle;
 
 	// Methods
 

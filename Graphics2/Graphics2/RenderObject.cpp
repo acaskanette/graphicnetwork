@@ -9,6 +9,9 @@
 
 RenderObject::RenderObject()
 {
+	modelMatrix = glm::mat4(1.0f);
+	viewMatrix = glm::mat4(1.0f);
+	projectionMatrix = glm::mat4(1.0f);
 }
 
 

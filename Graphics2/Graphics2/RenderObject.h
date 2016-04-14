@@ -18,6 +18,8 @@ public:
 
 	// Transform	
 	glm::mat4 translationMatrix;
+	glm::mat4 modelMatrix, viewMatrix;
+	glm::mat4 projectionMatrix;
 
 	// For image loading
 	int width, height;
@@ -28,7 +30,7 @@ public:
 	GLuint VBO;
 	GLuint program;
 	GLuint texture0, texture1;
-	GLuint transformMatrixLocation;
+	GLuint transformMatrixLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
 
 	RenderObject();
 	~RenderObject();

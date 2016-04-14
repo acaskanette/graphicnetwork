@@ -75,7 +75,9 @@ bool Window::Initialize() {
 					}
 					
 					// Initialize OpenGL Objects here
-					triangle = new Triangle();
+					triangle = new TexturedCube();
+
+					glEnable(GL_DEPTH_TEST);
 
 				}
 			}
@@ -225,7 +227,7 @@ void Window::Update() {
 
 void Window::Render() {
 	//Clear color buffer
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	triangle->Render();
 
