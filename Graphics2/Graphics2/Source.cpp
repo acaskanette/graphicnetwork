@@ -51,8 +51,13 @@ int main(int argc, char* args[])
 				}
 			}
 
+
+			// Update Window
+			window->Update();
+
 			//Render Window
 			window->Render();
+
 			
 		}
 

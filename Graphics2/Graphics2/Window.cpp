@@ -220,7 +220,7 @@ void Window::HandleInput(unsigned char key, int x, int y)
 }
 
 void Window::Update() {
-
+	triangle->Update();
 }
 
 void Window::Render() {

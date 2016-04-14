@@ -9,6 +9,7 @@ public:
 	~Triangle();
 
 	virtual void Render();
+	virtual void Update();
 
 	float timeElapsed;
 
