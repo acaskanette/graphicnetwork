@@ -8,7 +8,7 @@ public:
 	Triangle();
 	~Triangle();
 
-	virtual void Render();
+	virtual void Render(Camera* camera);
 	virtual void Update();
 
 	float timeElapsed;

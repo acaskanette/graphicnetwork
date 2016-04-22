@@ -10,12 +10,12 @@ public:
 	TexturedCube();
 	~TexturedCube();
 
-	virtual void Render();
+	virtual void Render(Camera* camera);
 	virtual void Update();
 
 	float timeElapsed;
 
-	Camera* camera;
+	//Camera* camera;
 
 };
 

@@ -11,6 +11,8 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 
+class Camera;
+
 class RenderObject
 {
 
@@ -26,9 +28,9 @@ public:
 	unsigned char* image;
 
 	// OpenGL Properties
-	GLuint VAO;
+	GLuint VAO, lightVAO;
 	GLuint VBO;
-	GLuint program;
+	GLuint program, lightProgram;
 	GLuint texture0, texture1;
 	GLuint transformMatrixLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
 
@@ -38,7 +40,7 @@ public:
 	GLuint LoadShaders(const char * vertexFileName, const char * fragmentFileName);
 	std::string ReadFile(const char *filePath);
 
-	virtual void Render() = 0;
+	virtual void Render(Camera* camera) = 0;
 	virtual void Update() = 0;
 };
 

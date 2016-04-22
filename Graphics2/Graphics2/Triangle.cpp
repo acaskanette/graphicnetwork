@@ -1,5 +1,5 @@
 #include "Triangle.h"
-
+#include "Camera.h"
 
 Triangle::Triangle()
 {
@@ -71,7 +71,7 @@ Triangle::~Triangle()
 {
 }
 
-void Triangle::Render() {
+void Triangle::Render(Camera* camera) {
 	
 	
 	GLfloat greenValue = (sin(timeElapsed) / 2) + 0.5;

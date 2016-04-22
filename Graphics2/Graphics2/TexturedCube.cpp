@@ -4,7 +4,7 @@
 TexturedCube::TexturedCube()
 {
 
-	camera = new Camera();
+	//camera = new Camera();
 
 	float screenWidth = 640.0f;
 	float screenHeight = 480.0f;
@@ -116,10 +116,7 @@ TexturedCube::~TexturedCube()
 }
 
 
-void TexturedCube::Render() {
-
-
-	
+void TexturedCube::Render(Camera* camera) {
 
 	GLfloat greenValue = (sin(timeElapsed) / 2) + 0.5;
 	GLint vertexColorLocation = glGetUniformLocation(program, "ourColor");
@@ -176,8 +173,6 @@ void TexturedCube::Render() {
 }
 
 void TexturedCube::Update() {
-
-	camera->Update();
 
 	timeElapsed += 0.016;
 

@@ -3,7 +3,9 @@
 #include <SDL.h>
 #include <gl\glew.h>
 
-#include "TexturedCube.h"
+#include "Skybox.h"
+
+class Camera;
 
 class Window
 {
@@ -27,7 +29,9 @@ public:
 	GLuint gVBO = 0;
 	GLuint gIBO = 0;
 
-	TexturedCube* triangle;
+	// Scene Objects
+	Skybox* triangle;
+	Camera* camera;
 
 	// Methods
 

@@ -12,15 +12,23 @@ public:
 	~Camera();
 
 	glm::vec3 position;
-	glm::vec3 target;
+	glm::vec3 forward;
 	glm::vec3 up;
 
 	glm::mat4 viewMatrix;
 
 	float elapsedTime;
 
+	float movementSpeed;
+
 	void Update();
 
+	void MoveUp(float speedMultiplier);
+	void MoveDown(float speedMultiplier);
+	void MoveForward(float speedMultiplier);
+	void MoveBackward(float speedMultiplier);
+	void MoveRight(float speedMultiplier);
+	void MoveLeft(float speedMultiplier);
 
 
 };

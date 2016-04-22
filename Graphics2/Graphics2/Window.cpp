@@ -3,6 +3,7 @@
 #include <gl\glu.h>
 #include <stdio.h>
 #include <string>
+#include "Camera.h"
 
 Window::Window()
 {
@@ -75,7 +76,8 @@ bool Window::Initialize() {
 					}
 					
 					// Initialize OpenGL Objects here
-					triangle = new TexturedCube();
+					triangle = new Skybox();
+					camera = new Camera();
 
 					glEnable(GL_DEPTH_TEST);
 
@@ -215,21 +217,56 @@ bool Window::InitializeGL() {
 void Window::HandleInput(unsigned char key, int x, int y)
 {
 	//Toggle quad
+
+	if (key == 'x')
+	{
+		SDL_DestroyWindow(gWindow);
+	}
+
 	if (key == 'q')
 	{
-		gRenderQuad = !gRenderQuad;
+		camera->MoveUp(0.5f);
 	}
+
+	if (key == 'e')
+	{
+		camera->MoveDown(0.5f);
+	}
+
+	if (key == 'w')
+	{
+		camera->MoveForward(0.5f);
+	}
+	if (key == 'a')
+	{
+		camera->MoveLeft(0.5f);
+	}
+	if (key == 's')
+	{
+		camera->MoveBackward(0.5f);
+	}
+	if (key == 'd')
+	{
+		camera->MoveRight(0.5f);
+	}
+
+
+
 }
 
 void Window::Update() {
+	
+	camera->Update();
 	triangle->Update();
+
 }
 
 void Window::Render() {
 	//Clear color buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	triangle->Render();
+
+	triangle->Render(camera);
 
 
 	////Render quad
